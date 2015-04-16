@@ -1,0 +1,8 @@
+<div class="section" id="golden-rule">
+    <div class="col">
+        {{#each posts}}
+            <h2>{{this.title}}</h2>
+            {{$_ 'trunc' this.content 300}} <a href="{{this.url}}" title="{{this.title}}">Read more</a>
+        {{/each}}
+    </div>
+</div>

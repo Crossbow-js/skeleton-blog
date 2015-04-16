@@ -1,0 +1,109 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/css/main.min.css">
+</head>
+<body>
+<header class="masthead">
+    <div class="container">
+        <span class="icon"></span>
+        <h1>shakyShane</h1>
+        <p class="lead">Building things with JavaScript</p>
+
+        <p class="masthead-links">
+
+            <!--<a href="https://github.com/mdo/code-guide">-->
+            <!--<span class="icon icon-github-circled"></span>-->
+            <!--</a>-->
+            <!--<a href="https://twitter.com/mdo">-->
+            <!--<span class="icon icon-twitter"></span>-->
+            <!--</a>-->
+        </p>
+    </div>
+</header>
+<main>
+    <div class="section" id="golden-rule">
+        <div class="col">
+            <h1 id="a-better-build-system">A Better Build System</h1>
+            <p>How can we make the development process that much cooler?</p>
+<pre class='highlight'><code class="js"><span class="hljs-keyword">var</span> bs          = <span class="hljs-built_in">require</span>(<span class="hljs-string">'browser-sync'</span>).create();
+<span class="hljs-keyword">var</span> sass        = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./sass'</span>);
+<span class="hljs-keyword">var</span> paths       = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./paths'</span>);
+<span class="hljs-keyword">var</span> injector    = <span class="hljs-built_in">require</span>(<span class="hljs-string">'bs-html-injector'</span>);
+<span class="hljs-keyword">var</span> crossbow    = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./crossbow'</span>);
+<span class="hljs-keyword">var</span> watchConfig = {ignoreInitial: <span class="hljs-literal">true</span>};
+
+<span class="hljs-comment">/**
+ * Register HTML injector with BrowserSync
+ */</span>
+bs.use(injector);
+
+<span class="hljs-comment">/**
+ * Local Server from app root
+ */</span>
+bs.init({server: <span class="hljs-literal">true</span>, logFileChanges: <span class="hljs-literal">false</span>});
+
+<span class="hljs-comment">/**
+ * Watch and compile SASS tasks
+ */</span>
+bs.watch(<span class="hljs-string">'scss'</span>, watchConfig, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-built_in">console</span>.time(<span class="hljs-string">'sass'</span>);
+    sass()
+        .then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            bs.reload(paths.sass.output);
+            <span class="hljs-built_in">console</span>.timeEnd(<span class="hljs-string">'sass'</span>);
+        })
+        .catch(browserError)
+        .done();
+});
+
+<span class="hljs-comment">/**
+ * Watch and compile SASS tasks
+ */</span>
+bs.watch(<span class="hljs-string">'src'</span>, watchConfig, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    crossbow()
+        .then(injector)
+        .catch(browserError)
+        .done();
+});
+
+<span class="hljs-comment">/**
+ * Helper for console/browser Errors
+ * @param err
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">browserError</span> <span class="hljs-params">(err)</span> </span>{
+    <span class="hljs-built_in">console</span>.error(err);
+    bs.notify(err.message);
+}
+
+<span class="hljs-comment">/**
+ * Also Export BrowserSync instance
+ * @type {Object|*}
+ */</span>
+<span class="hljs-built_in">module</span>.exports = bs;</code></pre>
+
+        </div>
+    </div>
+</main>
+
+<footer>
+
+</footer>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='https://www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+</script>
+</body>
+</html>
