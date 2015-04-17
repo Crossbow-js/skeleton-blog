@@ -26,63 +26,21 @@
 </header>
 <main>
     <div class="section" id="golden-rule">
-        <div class="col">
-            <p>Hi there</p>
-        </div>
-        <div class="col">
-        <pre class='highlight'><code class="js"><span class="hljs-keyword">var</span> crossbow = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crossbow'</span>);
-<span class="hljs-keyword">var</span> vfs      = <span class="hljs-built_in">require</span>(<span class="hljs-string">'vinyl-fs'</span>);
-<span class="hljs-keyword">var</span> prom     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'prom-seq'</span>);
-<span class="hljs-keyword">var</span> paths    = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./paths'</span>);
+        <div class="section" id="golden-rule">
+            <div class="col">
+                <p>For the developers and designers at JH, implementing and adhering to both a high <b>quality</b> of code
+                    and a consistence <b>style</b> of code is an important & challenging task. We have tooling
+                    in place that ensures any new techniques or industry best practices can be
+                    integrated into our workflow (via automated builds and development tools) with the least amount of friction
+                    possible.</p>
 
-<span class="hljs-comment">/**
- * Define the tasks that make up a build
- * @type {Object}
- */</span>
-<span class="hljs-keyword">var</span> builder = prom.create([build]);
+                <p>We love iterating on our existing processes and do not shy away from ditching much-loved tools
+                    and software should we be introduced to that new, shinier tool that can do the job better!
+                    </p>
 
-<span class="hljs-comment">/**
- * Build Crossbow
- * @param deferred
- */</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">build</span> <span class="hljs-params">(deferred)</span> </span>{
-    vfs.src([
-        paths.hbs.input + <span class="hljs-string">'/*.hbs'</span>,
-        paths.hbs.input + <span class="hljs-string">'/_posts/*.md'</span>
-    ])
-    .pipe(crossbow.stream({
-        data: {
-            pkg: <span class="hljs-string">'file:../package.json'</span>
-        },
-        config: {
-            base: paths.hbs.input,
-            defaultLayout: <span class="hljs-string">'default.hbs'</span>,
-            prettyUrls: <span class="hljs-literal">true</span>,
-            layouts: {
-                <span class="hljs-string">"type:post"</span>: <span class="hljs-string">'post.hbs'</span>
-            }
-        }
-    }))
-    .on(<span class="hljs-string">'error'</span>, deferred.reject)
-    .pipe(vfs.dest(paths.hbs.output))
-    .on(<span class="hljs-string">'end'</span>, deferred.resolve);
-}
-
-<span class="hljs-comment">/**
- * Export the promise sequence
- * @type {Object|*}
- */</span>
-<span class="hljs-built_in">module</span>.exports = builder;
-
-<span class="hljs-comment">/**
- * Handle CLI input
- */</span>
-<span class="hljs-keyword">if</span> (!<span class="hljs-built_in">module</span>.parent) {
-    <span class="hljs-built_in">console</span>.time(<span class="hljs-string">'crossbow'</span>);
-    builder().then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-        <span class="hljs-built_in">console</span>.timeEnd(<span class="hljs-string">'crossbow'</span>);
-    })
-}</code></pre>
+                <p>In fact, we believe so deeply in creating productive environments for our teams that we
+                regularly contribute to and even have our own open source projects such as <a href="">BrowserSync</a>.</p>
+            </div>
         </div>
     </div>
 </main>

@@ -90,6 +90,10 @@ code,
 pre {
     font-family: "PT Mono", Menlo, "Courier New", monospace;
     font-size: 95%;
+
+    @media (min-width: 48em) {
+        font-size: 75%;
+    }
 }
 code {
     padding: 2px 4px;
@@ -97,6 +101,7 @@ code {
     color: #d44950;
     background-color: #f7f7f9;
     border-radius: .2rem;
+
 }
 
 pre {
