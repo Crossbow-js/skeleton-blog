@@ -1,40 +1,40 @@
-/**
- * Base typography styles
- */
-code, samp {
-
-    font-family: monospace;
-    font-size: .7rem;
-    //border-radius: 3px;
-    background: $code-bg;
-    padding: 2px 4px;
-    margin: 0 2px;
-    border: 1px solid darken($code-bg, 5%);
-    border-radius: 3px;
-}
-
-pre {
-
-    padding: $base-spacing;
-    line-height: 1;
-    background: $code-bg;
-
-    /* reset previous inline code styles */
-    code {
-        border: 0;
-        padding: 0;
-        margin: 0;
-    }
-
-    margin-bottom: $base-spacing;
-    margin-left: -$base-spacing;
-    margin-right: -$base-spacing;
-    border: 5px solid darken($code-bg, 2%);
-    border-left-width: 0;
-    border-right-width: 0;
-
-    @media (min-width: 38em) {
-        border-left-width: 5px;
-        border-right-width: 5px;
-    }
-}
+///**
+// * Base typography styles
+// */
+//code, samp {
+//
+//    font-family: monospace;
+//    font-size: .7rem;
+//    //border-radius: 3px;
+//    background: $code-bg;
+//    padding: 2px 4px;
+//    margin: 0 2px;
+//    border: 1px solid darken($code-bg, 5%);
+//    border-radius: 3px;
+//}
+//
+//pre {
+//
+//    padding: $base-spacing;
+//    line-height: 1;
+//    background: $code-bg;
+//
+//    /* reset previous inline code styles */
+//    code {
+//        border: 0;
+//        padding: 0;
+//        margin: 0;
+//    }
+//
+//    margin-bottom: $base-spacing;
+//    margin-left: -$base-spacing;
+//    margin-right: -$base-spacing;
+//    border: 5px solid darken($code-bg, 2%);
+//    border-left-width: 0;
+//    border-right-width: 0;
+//
+//    @media (min-width: 38em) {
+//        border-left-width: 5px;
+//        border-right-width: 5px;
+//    }
+//}

@@ -13,18 +13,26 @@
 <header class="masthead">
     <div class="container">
         <span class="icon"></span>
-        <h1>{{pkg.site.title}}</h1>
-        <p class="lead">{{pkg.site.tagline}}</p>
+        <h1>JH Standards</h1>
+        <p class="lead">How we work at @wearejh</p>
 
         <p class="masthead-links">
-        {{#each pkg.site.links}}
-            <a href="{{this.url}}" {{#current this.url}}class="active"{{/current}}>{{this.label}}</a>
-        {{/each}}
+            <a href="/js" >JS</a>
+            <a href="/css+sass" >CSS/SASS</a>
+            <a href="/build-tools" class="active">Build Tools</a>
+            <a href="/php" >PHP</a>
         </p>
     </div>
 </header>
 <main>
-    {{content}}
+    <div class="section" id="golden-rule">
+        <div class="col">
+            <h1>Build Tools</h1>
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
 </main>
 
 <footer>

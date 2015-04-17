@@ -18,19 +18,22 @@ function build (deferred) {
         paths.hbs.input + '/*.hbs',
         paths.hbs.input + '/_posts/*.md'
     ])
-        .pipe(crossbow.stream({
-            config: {
-                base: paths.hbs.input,
-                defaultLayout: 'default.hbs',
-                prettyUrls: true,
-                layouts: {
-                    "type:post": 'post.hbs'
-                }
+    .pipe(crossbow.stream({
+        data: {
+            pkg: 'file:../package.json'
+        },
+        config: {
+            base: paths.hbs.input,
+            defaultLayout: 'default.hbs',
+            prettyUrls: true,
+            layouts: {
+                "type:post": 'post.hbs'
             }
-        }))
-        .on('error', deferred.reject)
-        .pipe(vfs.dest(paths.hbs.output))
-        .on('end', deferred.resolve);
+        }
+    }))
+    .on('error', deferred.reject)
+    .pipe(vfs.dest(paths.hbs.output))
+    .on('end', deferred.resolve);
 }
 
 /**

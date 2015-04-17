@@ -18,5 +18,27 @@
     "normalize.css": "^3.0.3",
     "prom-seq": "^1.1.0",
     "vinyl-fs": "^1.0.0"
+  },
+  "site": {
+    "title": "JH Standards",
+    "tagline": "How we work at @wearejh",
+    "links": [
+      {
+        "label": "JS",
+        "url": "/js"
+      },
+      {
+        "label": "CSS/SASS",
+        "url": "/css+sass"
+      },
+      {
+        "label": "Build Tools",
+        "url": "/build-tools"
+      },
+      {
+        "label": "PHP",
+        "url": "/php"
+      }
+    ]
   }
 }

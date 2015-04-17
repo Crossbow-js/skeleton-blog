@@ -32,9 +32,14 @@ bs.watch('scss', watchConfig, function () {
 /**
  * Watch and compile SASS tasks
  */
-bs.watch('src', watchConfig, function () {
+bs.watch(['src', 'package.json'], watchConfig, function () {
+    console.time('crossbow');
     crossbow()
-        .then(injector)
+        .then(function () {
+            console.timeEnd('crossbow');
+            injector();
+            bs.notify('<span style="color:magenta">HML injected</span>');
+        })
         .catch(browserError)
         .done();
 });

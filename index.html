@@ -13,31 +13,76 @@
 <header class="masthead">
     <div class="container">
         <span class="icon"></span>
-        <h1>shakyShane</h1>
-        <p class="lead">Building things with JavaScript</p>
+        <h1>JH Standards</h1>
+        <p class="lead">How we work at @wearejh</p>
 
         <p class="masthead-links">
-
-            <!--<a href="https://github.com/mdo/code-guide">-->
-            <!--<span class="icon icon-github-circled"></span>-->
-            <!--</a>-->
-            <!--<a href="https://twitter.com/mdo">-->
-            <!--<span class="icon icon-twitter"></span>-->
-            <!--</a>-->
+            <a href="/js" >JS</a>
+            <a href="/css+sass" >CSS/SASS</a>
+            <a href="/build-tools" >Build Tools</a>
+            <a href="/php" >PHP</a>
         </p>
     </div>
 </header>
 <main>
     <div class="section" id="golden-rule">
         <div class="col">
-                <h2>A Better Build System</h2>
-                
-    #{{post.title}}
+            <p>Hi there</p>
+        </div>
+        <div class="col">
+        <pre class='highlight'><code class="js"><span class="hljs-keyword">var</span> crossbow = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crossbow'</span>);
+<span class="hljs-keyword">var</span> vfs      = <span class="hljs-built_in">require</span>(<span class="hljs-string">'vinyl-fs'</span>);
+<span class="hljs-keyword">var</span> prom     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'prom-seq'</span>);
+<span class="hljs-keyword">var</span> paths    = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./paths'</span>);
 
-    How can we make the development process that much cooler?
+<span class="hljs-comment">/**
+ * Define the tasks that make up a build
+ * @type {Object}
+ */</span>
+<span class="hljs-keyword">var</span> builder = prom.create([build]);
 
-    {{hl src=&quot;../tasks/watch.js&quot;}}
-     <a href="/blog/a-better-build-system" title="A Better Build System">Read more</a>
+<span class="hljs-comment">/**
+ * Build Crossbow
+ * @param deferred
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">build</span> <span class="hljs-params">(deferred)</span> </span>{
+    vfs.src([
+        paths.hbs.input + <span class="hljs-string">'/*.hbs'</span>,
+        paths.hbs.input + <span class="hljs-string">'/_posts/*.md'</span>
+    ])
+    .pipe(crossbow.stream({
+        data: {
+            pkg: <span class="hljs-string">'file:../package.json'</span>
+        },
+        config: {
+            base: paths.hbs.input,
+            defaultLayout: <span class="hljs-string">'default.hbs'</span>,
+            prettyUrls: <span class="hljs-literal">true</span>,
+            layouts: {
+                <span class="hljs-string">"type:post"</span>: <span class="hljs-string">'post.hbs'</span>
+            }
+        }
+    }))
+    .on(<span class="hljs-string">'error'</span>, deferred.reject)
+    .pipe(vfs.dest(paths.hbs.output))
+    .on(<span class="hljs-string">'end'</span>, deferred.resolve);
+}
+
+<span class="hljs-comment">/**
+ * Export the promise sequence
+ * @type {Object|*}
+ */</span>
+<span class="hljs-built_in">module</span>.exports = builder;
+
+<span class="hljs-comment">/**
+ * Handle CLI input
+ */</span>
+<span class="hljs-keyword">if</span> (!<span class="hljs-built_in">module</span>.parent) {
+    <span class="hljs-built_in">console</span>.time(<span class="hljs-string">'crossbow'</span>);
+    builder().then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-built_in">console</span>.timeEnd(<span class="hljs-string">'crossbow'</span>);
+    })
+}</code></pre>
         </div>
     </div>
 </main>
